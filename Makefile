@@ -12,3 +12,5 @@ deploy-service-container: build-service-container push-service-container
 	kubectl delete -f deployment/dev/trades/trades.yaml --ignore-not-found=true
 	kubectl apply -f deployment/dev/trades/trades.yaml
  
+ lint:
+	ruff check . --fix

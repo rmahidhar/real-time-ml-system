@@ -1,12 +1,12 @@
-
 from kraken_api import KrakenAPI, Trade
 from loguru import logger
 from quixstreams import Application
 
+
 def run(
-        kafka_broker_address: str,
-        kafka_topic_name: str,
-        kraken_api: KrakenAPI,
+    kafka_broker_address: str,
+    kafka_topic_name: str,
+    kraken_api: KrakenAPI,
 ):
     # create a Quix application
     app = Application(kafka_broker_address)
@@ -27,9 +27,10 @@ def run(
                 # 3. produce a message into the kafka topic
                 producer.produce(topic=topic.name, value=message.value, key=message.key)
 
-                logger.info(f"Produced a message to the topic {topic.name}")
+                logger.info(f'Produced a message to the topic {topic.name}')
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     from config import config
 
     # create object that can talk to the Kraken API and get us the trade
@@ -41,4 +42,3 @@ if __name__ == "__main__":
         kafka_topic_name=config.kafka_topic_name,
         kraken_api=api,
     )
-
