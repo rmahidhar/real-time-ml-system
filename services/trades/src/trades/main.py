@@ -1,5 +1,5 @@
 
-from trades.kraken_api import KrakenAPI, Trade
+from kraken_api import KrakenAPI, Trade
 from loguru import logger
 from quixstreams import Application
 
@@ -29,9 +29,8 @@ def run(
 
                 logger.info(f"Produced a message to the topic {topic.name}")
 
-
 if __name__ == "__main__":
-    from trades.config import config
+    from config import config
 
     # create object that can talk to the Kraken API and get us the trade
     # data in real time
